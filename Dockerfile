@@ -47,9 +47,9 @@ RUN sudo apt-get update && \
 ## install R dependencies
 ## download R. lsb_release -cs will yield xenial"
 ## don't forget to set environment variable R_LIBS_USER
-RUN curl -fLo /tmp/R-4.0.0-$(lsb_release -cs).xz https://travis-ci.rstudio.org/R-${R_VERSION}-$(lsb_release -cs).xz && \
+RUN curl -fLo /tmp/R-${R_VERSION}-$(lsb_release -cs).xz https://travis-ci.rstudio.org/R-${R_VERSION}-$(lsb_release -cs).xz && \
     tar xJf /tmp/R-${R_VERSION}-$(lsb_release -cs).xz -C ~ && \
-    rm /tmp/R-4.0.0-$(lsb_release -cs).xz && \
+    rm /tmp/R-${R_VERSION}-$(lsb_release -cs).xz && \
     sudo mkdir -p /usr/local/lib/R/site-library $R_LIBS_USER && \
     sudo chmod 2777 /usr/local/lib/R /usr/local/lib/R/site-library $R_LIBS_USER && \
     echo 'options(repos = c(CRAN = "http://cloud.r-project.org"))' > ~/.Rprofile.site
