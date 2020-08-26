@@ -9,6 +9,12 @@ The goal is reducing the time that takes debugging an error in Anaconda environm
 
 
 
+## Steps
+
+There are some basic steps to reproduce a Travis remote machine and turn it into a local Docker container. First is identifying from our current Travis machine what is the Dockerhub instance that we should serve as a base of the local Travis machine. Second, we start writing a Dockerfile where the first line is downloading the remote image. Third, we add the locale, language, environment variables, and other settings. Fourth, we install the Linux dependencies, 
+
+
+
 ## Build Docker image
 
 ```
