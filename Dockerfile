@@ -10,7 +10,8 @@ ENV LANG en_US.UTF-8
 USER travis
 WORKDIR /home/travis
 
-ENV R_VERSION="4.0.0"
+# ENV R_VERSION="4.0.0"
+ENV R_VERSION="3.6.3"
 ENV PYTORCH_VERSION="1.1"
 ENV TRAVIS_HOME /home/travis
 ENV R_BUILD_LIBS=/home/travis/R/Library
