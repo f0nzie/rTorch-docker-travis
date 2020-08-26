@@ -1,6 +1,25 @@
 # HISTORY
 Command history in the Travis local docker machine.
 
+* From newest to oldest:
+
+```
+    1  Rscript -e 'devtools::check()'
+    2  ls
+    3  cd ..
+    4  R CMD check --as-cran rTorch_0.0.3.tar.gz
+    5  ls
+    6  R CMD check rTorch_0.0.3.tar.gz
+    7  ls
+    8  R CMD check rTorch
+    9  R CMD check --as-cran rTorch
+   10  cd rTorch
+   11  R CMD check rTorch
+   12  Rscript -e 'devtools::test()'
+   13  R
+   14  Rscript -e 'devtools::test()'
+```   
+
 ```    
     2  ls /usr/lib/x86_64-linux-gnu
     3  ls /usr/lib/x86_64-linux-gnu/libstd*
