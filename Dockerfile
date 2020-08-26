@@ -77,17 +77,6 @@ RUN Rscript -e 'install.packages(c("logging", "reticulate", "jsonlite", "R6", "r
 # packages for testing the package
 RUN Rscript -e 'install.packages(c("testthat", "rmarkdown", "knitr", "devtools"))'
 
-# install C++
-# ===================================
-#* option 1
-# RUN sudo apt update && \
-#     sudo apt-get install gcc-4.9
-# -----------------------------------
-#* option 2
-RUN sudo apt-get update && \
-    sudo apt-get install libstdc++6
-# ====================================
-
 
 # install Python Miniconda latest 
 # TODO: consider installing a fixed version of Miniconda
