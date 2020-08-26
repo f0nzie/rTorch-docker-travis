@@ -1,5 +1,6 @@
 # set a Linux environment mixing Travis, R, Python Anaconda
 FROM travisci/ci-opal:packer-1558622096-f909ac5
+LABEL maintainer="Alfonso R. Reyes <alfonso.reyes@oilgainsanalytics.com>"
 
 # Locale configuration --------------------------------------------------------#
 #* this fixes the WARNING checking a package with encoding  'UTF-8'  in an ASCII locale
@@ -111,7 +112,7 @@ RUN R -e 'rTorch:::install_conda(package="pytorch=1.6", envname="r-torch", \
 # check as CRAN
 RUN cd f0nzie && \
     R CMD build rTorch  && \
-    R CMD check --as-cran rTorch_0.0.3.tar.gz
+    R CMD check --as-cran rTorch_0.0.3.9003.tar.gz
 
 
 RUN sudo rm /usr/lib/x86_64-linux-gnu/libstdc++.so.6    # remove link to libstdc++.so.6 in ther Linux installation  && \
