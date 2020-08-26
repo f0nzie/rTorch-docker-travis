@@ -13,17 +13,16 @@ ENV PYTORCH_VERSION="1.1"
 ENV TRAVIS_HOME /home/travis
 ENV R_BUILD_LIBS=/home/travis/R/Library
 ENV CONDA_BIN=miniconda/bin
+# ENV R_BIN=R-bin/lib/R
+ENV R_BIN=R-bin/bin
 ENV TEX_BIN=texlive/bin/x86_64-linux
-ENV R_BIN=R-bin/lib/R
 ENV PYTORCH_CPP_LIBS=miniconda/envs/r-torch/lib
-
 #* Fix error "pdflatex is not available" during R CMD check
-ENV PATH=${TRAVIS_HOME}/texlive/bin/x86_64-linux:$PATH
+# ENV PATH=${TRAVIS_HOME}/texlive/bin/x86_64-linux:$PATH
 # allow to find and execute R and scripts
 ENV R_HOME=${TRAVIS_HOME}/R-bin/lib/R
-ENV PATH=${TRAVIS_HOME}/R-bin/bin:$PATH
-RUN export PATH=${TRAVIS_HOME}/miniconda/bin:$PATH
-ENV LD_LIBRARY_PATH=${TRAVIS_HOME}/miniconda/envs/r-torch/lib/
+ENV PATH=${TRAVIS_HOME}/${R_BIN}:${TRAVIS_HOME}/${CONDA_BIN}:${TRAVIS_HOME}/${TEX_BIN}:$PATH
+ENV LD_LIBRARY_PATH=${TRAVIS_HOME}/${PYTORCH_CPP_LIBS}
 
 # repositories
 RUN sudo add-apt-repository -y "ppa:marutter/rrutter4.0" && \
