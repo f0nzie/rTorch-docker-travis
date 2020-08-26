@@ -2,6 +2,14 @@
 Command history in the Travis local docker machine.
 
 * From newest to oldest:
+```
+    1  conda
+    2  conda activate r-torch    # needs to activate conda first
+    3  conda init bash
+    4  exit
+    5  conda activate r-torch
+    6  python
+```    
 
 ```
     1  Rscript -e 'devtools::check()'

@@ -11,7 +11,8 @@ USER travis
 WORKDIR /home/travis
 
 # ENV R_VERSION="4.0.0"
-ENV R_VERSION="3.6.3"
+ENV R_VERSION="4.0.0"
+ENV PYTHON_VERSION="3.6"
 ENV PYTORCH_VERSION="1.1"
 ENV TRAVIS_HOME /home/travis
 ENV R_BUILD_LIBS=/home/travis/R/Library
@@ -109,9 +110,14 @@ RUN cd f0nzie/rTorch  && \
 #! current command failing
 # This will exit with error. Problem with -cpu suffix
 # RUN R -e 'rTorch::install_pytorch(method="conda", version=Sys.getenv("PYTORCH_VERSION"), channel="pytorch", conda_python_version="3.6")'
-RUN R -e 'rTorch:::install_conda(package="pytorch=1.6", envname="r-torch", \
-    conda="auto", conda_python_version = "3.6", pip=FALSE, channel="pytorch", \
-    extra_packages=c("torchvision", "cpuonly", "matplotlib", "pandas"))'
+# PYTORCH_VERSION
+RUN R -e 'rTorch:::install_conda(\
+    package=paste0("pytorch=", Sys.getenv("PYTORCH_VERSION")), \
+    envname="r-torch", conda="auto", \
+    conda_python_version=Sys.getenv("PYTHON_VERSION"), \
+    pip=FALSE, channel="pytorch", \
+    extra_packages=c("torchvision", "cpuonly", "matplotlib", "pandas")\
+    )'
 
 # check as CRAN
 RUN cd f0nzie && \
