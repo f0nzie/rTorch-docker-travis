@@ -284,3 +284,9 @@ Failed:   0
 Warnings: 28
 Skipped:  1
 ```
+
+## Test results
+
+### rTorch v0.0.3.9003, R-3.6.3, python=3.6, pytorch=-1.1
+
+* All tests from `Rscript -e 'devtools::test(cran=TRUE, run_dont_test=TRUE)'` passed
