@@ -112,3 +112,14 @@ lrwxrwxrwx 1 travis travis  19 Aug 25 21:30 /home/travis/miniconda/lib/libstdc++
 # export PATH="$HOME/miniconda/bin:$PATH" && \
 # export PATH=${TRAVIS_HOME}/texlive/bin/x86_64-linux:$PATH && \
 ```
+
+# install C++
+# ===================================
+#* option 1
+# RUN sudo apt update && \
+#     sudo apt-get install gcc-4.9
+# -----------------------------------
+#* option 2
+RUN sudo apt-get update && \
+    sudo apt-get install libstdc++6
+# ====================================
