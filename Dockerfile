@@ -94,9 +94,11 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -
 
 # clone repo rTorch; master branch modified "master-r-3.6"
 # TODO: change repo to desired branch below
-RUN git clone --depth=50 --branch=fix-suffix-cpu-in-install_pytorch-travis https://github.com/f0nzie/rTorch.git f0nzie/rTorch && \
+RUN git clone --depth=50 --branch=develop https://github.com/f0nzie/rTorch.git f0nzie/rTorch && \
+    # git clone --depth=50 --branch=fix-suffix-cpu-in-install_pytorch-travis https://github.com/f0nzie/rTorch.git f0nzie/rTorch && \
     cd f0nzie/rTorch && \
-    git checkout -qf 7eab93c11e5a0147983a18e571c19e9e75851fb9     # head of this branch: master-3.6.3
+    git checkout -qf 32616d0bf202318d8ec4a50641e947c3ad60dc43       # head of "develop"
+    # git checkout -qf 7eab93c11e5a0147983a18e571c19e9e75851fb9     # head of "branch fix-suffix-cpu-in-install_pytorch-travis"
     # git checkout -qf 211787d7a9ed2cb08053402afbd291bc5b97da54
 
 # install the core package
