@@ -9,6 +9,7 @@ ENV LANG en_US.UTF-8
 USER travis
 WORKDIR /home/travis
 
+ENV R_VERSION="4.0.0"
 ENV PYTORCH_VERSION="1.1"
 ENV TRAVIS_HOME /home/travis
 ENV R_BUILD_LIBS=/home/travis/R/Library
@@ -44,8 +45,8 @@ RUN sudo apt-get update && \
 ## install R dependencies
 ## download R. lsb_release -cs will yield xenial"
 ## don't forget to set environment variable R_LIBS_USER
-RUN curl -fLo /tmp/R-4.0.0-$(lsb_release -cs).xz https://travis-ci.rstudio.org/R-4.0.0-$(lsb_release -cs).xz && \
-    tar xJf /tmp/R-4.0.0-$(lsb_release -cs).xz -C ~ && \
+RUN curl -fLo /tmp/R-4.0.0-$(lsb_release -cs).xz https://travis-ci.rstudio.org/R-${R_VERSION}-$(lsb_release -cs).xz && \
+    tar xJf /tmp/R-${R_VERSION}-$(lsb_release -cs).xz -C ~ && \
     rm /tmp/R-4.0.0-$(lsb_release -cs).xz && \
     sudo mkdir -p /usr/local/lib/R/site-library $R_LIBS_USER && \
     sudo chmod 2777 /usr/local/lib/R /usr/local/lib/R/site-library $R_LIBS_USER && \
