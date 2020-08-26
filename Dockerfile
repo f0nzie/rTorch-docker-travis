@@ -111,8 +111,9 @@ RUN R -e 'rTorch:::install_conda(package="pytorch=1.6", envname="r-torch", \
 
 # check as CRAN
 RUN cd f0nzie && \
-    R CMD build rTorch  && \
-    R CMD check --as-cran rTorch_0.0.3.9003.tar.gz
+    R CMD build rTorch
+    # R CMD check --as-cran rTorch_0.0.3.9003.tar.gz
+    # R CMD check  rTorch_0.0.3.9003.tar.gz
 
 
 RUN sudo rm /usr/lib/x86_64-linux-gnu/libstdc++.so.6    # remove link to libstdc++.so.6 in ther Linux installation  && \
