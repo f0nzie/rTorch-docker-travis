@@ -122,7 +122,8 @@ RUN cd f0nzie && \
 
 RUN sudo rm /usr/lib/x86_64-linux-gnu/libstdc++.so.6    # remove link to libstdc++.so.6 in ther Linux installation  && \
     cd ~/f0nzie/rTorch && \
-    Rscript -e 'devtools::check()'
+    # Rscript -e 'devtools::check()'
+    Rscript -e 'devtools::test(cran=TRUE, run_dont_test=TRUE)'
 
 WORKDIR /home/travis/f0nzie/rTorch
 
