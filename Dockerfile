@@ -32,7 +32,7 @@ RUN sudo add-apt-repository -y "ppa:marutter/rrutter4.0" && \
     
 
 # install Linux dependencies
-RUN sudo apt update && \
+RUN sudo apt-get update && \
     sudo apt-get install -y --no-install-recommends \
     build-essential \
     gcc g++ \
