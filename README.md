@@ -28,3 +28,56 @@ docker build -t my-travis .
 docker run --rm --name my-travis-kont -dit my-travis /sbin/init
 docker exec -it my-travis-kont bash -l
 ```
+
+
+
+## Run PyTorch from inside the container
+
+### Get the PyTorch version
+
+![image-20200826122947407](assets/README/image-20200826122947407.png)
+
+
+
+## Tips 
+
+### Get the PyTorch version from the Dockerfile
+
+```
+RUN R -e 'Sys.getenv("PYTORCH_VERSION")'
+```
+
+### Set the PyTorch version in a R command from the Dockerfile
+
+```dockerfile
+ENV PYTORCH_VERSION="1.1"
+
+
+RUN R -e 'rTorch:::install_conda(\
+    package=paste0("pytorch=", Sys.getenv("PYTORCH_VERSION")), \
+    envname="r-torch", conda="auto", \
+    conda_python_version="3.6", \
+    pip=FALSE, channel="pytorch", \
+    extra_packages=c("torchvision", "cpuonly", "matplotlib", "pandas")\
+    )'
+```
+
+
+
+### Set the Python version in a R command from the Dockerfile
+
+To get the environment in R value we use `Sys.getenv("PYTHON_VERSION")`.
+
+```
+ENV PYTHON_VERSION="3.6"
+
+
+RUN R -e 'rTorch:::install_conda(\
+    package=paste0("pytorch=", Sys.getenv("PYTORCH_VERSION")), \
+    envname="r-torch", conda="auto", \
+    conda_python_version=Sys.getenv("PYTHON_VERSION"), \
+    pip=FALSE, channel="pytorch", \
+    extra_packages=c("torchvision", "cpuonly", "matplotlib", "pandas")\
+    )'
+```
+
